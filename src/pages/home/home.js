@@ -17,7 +17,7 @@ import {
 } from 'react-bootstrap'
 const Home = (props) => {
     let navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const DOToken = searchParams.get('DOToken')
     const senderName = useRef(null)
     const recieverName = useRef(null)
@@ -156,7 +156,7 @@ const Home = (props) => {
     const [isLoadingErrorSubmit, setIsLoadingErrorSubmit] = useState(false)
     useEffect(() => {
         getData()
-    }, [])
+    })
     return (
         <Container fluid={'true'}>
             <Navbar

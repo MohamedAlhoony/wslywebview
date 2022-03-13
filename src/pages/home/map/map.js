@@ -5,7 +5,6 @@ import {
     GoogleMap,
     Marker,
 } from 'react-google-maps'
-import { Icon } from 'semantic-ui-react'
 
 const handleMarkerClick = (props, item, marker, key) => {
     props.handleMarkerClick(item, marker, key)
