@@ -100,26 +100,7 @@ const Home = (props) => {
             setIsLoadingSubmit(false)
         }
     }
-    const getData = async () => {
-        try {
-            setIsLoadingError(false)
-            setIsLoadingDetails(true)
-            let orderDetails = await getOrderDetails({
-                doToken: DOToken,
-            })
-            if (orderDetails.OrderDetails?.Status !== 0) {
-                navigate('/alreadyAccepted', { replace: true })
-            }
-            orderDetails?.ClientLocations.slice()?.forEach((element) => {
-                element.isSelected = false
-            })
-            setOrderDetails(orderDetails)
-            setIsLoadingDetails(false)
-        } catch (error) {
-            setIsLoadingError(true)
-            setIsLoadingDetails(false)
-        }
-    }
+
     const handleMarkerClick = (item, marker, key) => {
         const oldState = Object.assign({}, orderDetails)
         oldState.selectedLocation = item
@@ -155,8 +136,31 @@ const Home = (props) => {
     const [isLoadingSubmit, setIsLoadingSubmit] = useState(false)
     const [isLoadingErrorSubmit, setIsLoadingErrorSubmit] = useState(false)
     useEffect(() => {
+        if (!DOToken) {
+            navigate('/error')
+        }
+        const getData = async () => {
+            try {
+                setIsLoadingError(false)
+                setIsLoadingDetails(true)
+                let orderDetails = await getOrderDetails({
+                    doToken: DOToken,
+                })
+                if (orderDetails.OrderDetails?.Status !== 0) {
+                    navigate('/alreadyAccepted', { replace: true })
+                }
+                orderDetails?.ClientLocations.slice()?.forEach((element) => {
+                    element.isSelected = false
+                })
+                setOrderDetails(orderDetails)
+                setIsLoadingDetails(false)
+            } catch (error) {
+                setIsLoadingError(true)
+                setIsLoadingDetails(false)
+            }
+        }
         getData()
-    }, [])
+    }, [DOToken, navigate])
     return (
         <Container fluid={'true'}>
             <Navbar
