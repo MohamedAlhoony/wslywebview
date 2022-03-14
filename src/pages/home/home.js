@@ -4,10 +4,7 @@ import Map from './map/map'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import {
     Container,
-    Navbar,
     ListGroup,
-    Nav,
-    Image,
     Row,
     Col,
     Form,
@@ -162,314 +159,281 @@ const Home = (props) => {
         getData()
     }, [DOToken, navigate])
     return (
-        <Container fluid={'true'}>
-            <Navbar
-                style={{ backgroundColor: '#2c3e50' }}
-                variant="dark"
-                expand={'lg'}
-            >
-                <Container>
-                    <Navbar.Brand href="#home">
-                        <Image src={'./images/logo.png'} width={'200px'} />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="#home">الرئيسية</Nav.Link>
-                            <Nav.Link href="#link">عن المظلة</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-            <Container>
+        <Container>
+            <Row>
+                <Col className={'my-2'}>
+                    <Alert variant="primary">
+                        <h5>تفاصيل الطلبية:</h5>
+                    </Alert>
+                </Col>
+            </Row>
+            {isLoadingDetails ? (
+                <Row>
+                    <Col className={'d-flex justify-content-center'}>
+                        <Spinner
+                            variant="primary"
+                            animation="border"
+                            role="status"
+                        >
+                            <span className="visually-hidden"></span>
+                        </Spinner>
+                    </Col>
+                </Row>
+            ) : isLoadingError ? (
                 <Row>
                     <Col className={'my-2'}>
-                        <Alert variant="primary">
-                            <h5>تفاصيل الطلبية:</h5>
+                        <Alert variant="danger">
+                            <h5>فشل تحميل البيانات</h5>
                         </Alert>
                     </Col>
                 </Row>
-                {isLoadingDetails ? (
-                    <Row>
-                        <Col className={'d-flex justify-content-center'}>
-                            <Spinner
-                                variant="primary"
-                                animation="border"
-                                role="status"
+            ) : (
+                <Row>
+                    <Col md={'4'}>
+                        <ListGroup as="ol">
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
                             >
-                                <span className="visually-hidden"></span>
-                            </Spinner>
-                        </Col>
-                    </Row>
-                ) : isLoadingError ? (
-                    <Row>
-                        <Col className={'my-2'}>
-                            <Alert variant="danger">
-                                <h5>فشل تحميل البيانات</h5>
-                            </Alert>
-                        </Col>
-                    </Row>
-                ) : (
-                    <Row>
-                        <Col md={'4'}>
-                            <ListGroup as="ol">
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            وصف الطلبية:
-                                        </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.Description ?? 'لايوجد'}
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">وصف الطلبية:</div>
+                                    {orderDetails?.OrderDetails?.Description ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">رقم الطلبية:</div>
+                                    {orderDetails?.OrderDetails?.RefrenceNo ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">
+                                        تاريخ الإنشاء:
                                     </div>
-                                </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            رقم الطلبية:
-                                        </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.RefrenceNo ?? 'لايوجد'}
-                                    </div>
-                                </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            تاريخ الإنشاء:
-                                        </div>
-                                        {moment
-                                            .utc(
-                                                orderDetails?.OrderDetails
-                                                    ?.CreateDate
-                                            )
-                                            .local()
-                                            .format('DD/MM/YYYY HH:mm A')}
-                                        {/* {orderDetails?.OrderDetails?.CreateDate
+                                    {moment
+                                        .utc(
+                                            orderDetails?.OrderDetails
+                                                ?.CreateDate
+                                        )
+                                        .local()
+                                        .format('DD/MM/YYYY HH:mm A')}
+                                    {/* {orderDetails?.OrderDetails?.CreateDate
                                             ? moment(
                                                   orderDetails?.OrderDetails
                                                       ?.CreateDate
                                               )
                                             : 'لايوجد'} */}
-                                    </div>
-                                </ListGroup.Item>
-                            </ListGroup>
-                        </Col>
-                        <Col md={'4'}>
-                            <ListGroup as="ol">
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            اسم المحل:
-                                        </div>
-                                        {orderDetails?.OrderDetails?.ShopName ??
-                                            'لايوجد'}
-                                    </div>
-                                </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            رقم المحل:
-                                        </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.ShopTelNo ?? 'لايوجد'}
-                                    </div>
-                                </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            القيمة الكلية:
-                                        </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.TotalAmount ?? 'لايوجد'}
-                                    </div>
-                                </ListGroup.Item>
-                            </ListGroup>
-                        </Col>
-                        <Col md={'4'}>
-                            <ListGroup as="ol">
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">
-                                            رقم هاتف الزبون:
-                                        </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.ClientTelNo ?? 'لايوجد'}
-                                    </div>
-                                </ListGroup.Item>
-                            </ListGroup>
-                        </Col>
-                    </Row>
-                )}
-                <Row>
-                    <Col className={'my-2 mt-5'}>
-                        <Alert variant="primary">
-                            <h5>معلوماتك:</h5>
-                        </Alert>
+                                </div>
+                            </ListGroup.Item>
+                        </ListGroup>
                     </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {orderDetails ? (
-                            <>
-                                <h5>قم بتحديد موقعك على الخريطة:</h5>
-                                <Map
-                                    onMapClick={onMapClick}
-                                    handleMarkerClick={handleMarkerClick}
-                                    locations={orderDetails.ClientLocations}
-                                />
-                            </>
-                        ) : null}
-                    </Col>
-                </Row>
-                {isLoadingSubmit ? (
-                    <Row>
-                        <Col className={'d-flex justify-content-center my-5'}>
-                            <Spinner
-                                variant="primary"
-                                animation="border"
-                                role="status"
+                    <Col md={'4'}>
+                        <ListGroup as="ol">
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
                             >
-                                <span className="visually-hidden"></span>
-                            </Spinner>
-                        </Col>
-                    </Row>
-                ) : (
-                    <Row className={'my-4'}>
-                        <Col>
-                            {isLoadingErrorSubmit && (
-                                <Row>
-                                    <Col className={'my-2'}>
-                                        <Alert variant="danger">
-                                            <h5>{errorMsg}</h5>
-                                        </Alert>
-                                    </Col>
-                                </Row>
-                            )}
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">اسم المحل:</div>
+                                    {orderDetails?.OrderDetails?.ShopName ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">رقم المحل:</div>
+                                    {orderDetails?.OrderDetails?.ShopTelNo ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">
+                                        القيمة الكلية:
+                                    </div>
+                                    {orderDetails?.OrderDetails?.TotalAmount ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Col>
+                    <Col md={'4'}>
+                        <ListGroup as="ol">
+                            <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start"
+                            >
+                                <div className="ms-2 me-auto">
+                                    <div className="fw-bold">
+                                        رقم هاتف الزبون:
+                                    </div>
+                                    {orderDetails?.OrderDetails?.ClientTelNo ??
+                                        'لايوجد'}
+                                </div>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Col>
+                </Row>
+            )}
+            <Row>
+                <Col className={'my-2 mt-5'}>
+                    <Alert variant="primary">
+                        <h5>معلوماتك:</h5>
+                    </Alert>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    {orderDetails ? (
+                        <>
+                            <h5>قم بتحديد موقعك على الخريطة:</h5>
+                            <Map
+                                onMapClick={onMapClick}
+                                handleMarkerClick={handleMarkerClick}
+                                locations={orderDetails.ClientLocations}
+                            />
+                        </>
+                    ) : null}
+                </Col>
+            </Row>
+            {isLoadingSubmit ? (
+                <Row>
+                    <Col className={'d-flex justify-content-center my-5'}>
+                        <Spinner
+                            variant="primary"
+                            animation="border"
+                            role="status"
+                        >
+                            <span className="visually-hidden"></span>
+                        </Spinner>
+                    </Col>
+                </Row>
+            ) : (
+                <Row className={'my-4'}>
+                    <Col>
+                        {isLoadingErrorSubmit && (
                             <Row>
                                 <Col className={'my-2'}>
-                                    <p>أدخل بياناتك هنا:</p>
+                                    <Alert variant="danger">
+                                        <h5>{errorMsg}</h5>
+                                    </Alert>
                                 </Col>
                             </Row>
-                            <Form>
-                                <Form.Group as={Row} className="mb-3">
-                                    {/* <Col sm="6" className="mb-2">
+                        )}
+                        <Row>
+                            <Col className={'my-2'}>
+                                <p>أدخل بياناتك هنا:</p>
+                            </Col>
+                        </Row>
+                        <Form>
+                            <Form.Group as={Row} className="mb-3">
+                                {/* <Col sm="6" className="mb-2">
                                     <Form.Label column sm="2">
                                         اسم الزبون:
                                     </Form.Label>
                                     <Form.Control type="text" />
                                 </Col> */}
-                                    <Col sm="6" className="mb-2">
-                                        {/* <Form.Label column sm="2">
+                                <Col sm="6" className="mb-2">
+                                    {/* <Form.Label column sm="2">
                                         اسم المرسل:
                                     </Form.Label> */}
-                                        <Form.Control
-                                            placeholder="اسم المرسل"
-                                            value={senderName}
-                                            onChange={(event) =>
-                                                setSenderName(
-                                                    event.target.value
-                                                )
-                                            }
-                                            type="text"
-                                        />
-                                    </Col>
-                                    <Col sm="6" className="mb-2">
-                                        {/* <Form.Label column sm="2">
+                                    <Form.Control
+                                        placeholder="اسم المرسل"
+                                        value={senderName}
+                                        onChange={(event) =>
+                                            setSenderName(event.target.value)
+                                        }
+                                        type="text"
+                                    />
+                                </Col>
+                                <Col sm="6" className="mb-2">
+                                    {/* <Form.Label column sm="2">
                                         اسم المستقبل:
                                     </Form.Label> */}
-                                        <Form.Control
-                                            placeholder="اسم المستقبل"
-                                            value={recieverName}
-                                            onChange={(event) =>
-                                                setRecieverName(
-                                                    event.target.value
-                                                )
-                                            }
-                                            type="text"
-                                        />
-                                    </Col>
-                                    {/* <Col sm="6" className="mb-2">
+                                    <Form.Control
+                                        placeholder="اسم المستقبل"
+                                        value={recieverName}
+                                        onChange={(event) =>
+                                            setRecieverName(event.target.value)
+                                        }
+                                        type="text"
+                                    />
+                                </Col>
+                                {/* <Col sm="6" className="mb-2">
                                     <Form.Label column sm="2">
                                         رقم الهاتف:
                                     </Form.Label>
                                     <Form.Control type="text" />
                                 </Col> */}
 
-                                    <Col sm="6" className="mb-2">
-                                        {/* <Form.Label column sm="2">
+                                <Col sm="6" className="mb-2">
+                                    {/* <Form.Label column sm="2">
                                         رقم هاتف المستقبل:
                                     </Form.Label> */}
-                                        <Form.Control
-                                            placeholder="رقم هاتف المستقبل"
-                                            value={recieverNumber}
-                                            onChange={(event) =>
-                                                setRecieverNumber(
-                                                    event.target.value
-                                                )
-                                            }
-                                            type="text"
-                                        />
-                                    </Col>
-                                    <Col sm="6" className="mb-2">
-                                        {/* <Form.Label column sm="2">
+                                    <Form.Control
+                                        placeholder="رقم هاتف المستقبل"
+                                        value={recieverNumber}
+                                        onChange={(event) =>
+                                            setRecieverNumber(
+                                                event.target.value
+                                            )
+                                        }
+                                        maxLength={'20'}
+                                        type="number"
+                                    />
+                                </Col>
+                                <Col sm="6" className="mb-2">
+                                    {/* <Form.Label column sm="2">
                                         رقم هاتف المستقبل:
                                     </Form.Label> */}
-                                        <Form.Control
-                                            placeholder="ملاحظات"
-                                            value={senderNote}
-                                            onChange={(event) =>
-                                                setSenderNote(
-                                                    event.target.value
-                                                )
-                                            }
-                                            as="textarea"
-                                        />
-                                    </Col>
-                                </Form.Group>
-                            </Form>
-                        </Col>
-                    </Row>
-                )}
-                <Row>
-                    <Col xs={12} className={'mb-4 d-grid gap-2'}>
-                        <Button
-                            disabled={
-                                senderName === '' ||
-                                recieverName === '' ||
-                                recieverNumber === '' ||
-                                isLoadingSubmit
-                            }
-                            variant="success"
-                            onClick={submitForm}
-                        >
-                            قبول الطلب
-                        </Button>
-                        <Button variant="danger" onClick={() => {}}>
-                            رفض
-                        </Button>
+                                    <Form.Control
+                                        placeholder="ملاحظات"
+                                        value={senderNote}
+                                        onChange={(event) =>
+                                            setSenderNote(event.target.value)
+                                        }
+                                        as="textarea"
+                                    />
+                                </Col>
+                            </Form.Group>
+                        </Form>
                     </Col>
                 </Row>
-            </Container>
+            )}
+            <Row>
+                <Col xs={12} className={'mb-4 d-grid gap-2'}>
+                    <Button
+                        disabled={
+                            senderName === '' ||
+                            recieverName === '' ||
+                            recieverNumber === '' ||
+                            isLoadingSubmit
+                        }
+                        variant="success"
+                        onClick={submitForm}
+                    >
+                        قبول الطلب
+                    </Button>
+                    <Button variant="danger" onClick={() => {}}>
+                        رفض
+                    </Button>
+                </Col>
+            </Row>
         </Container>
     )
 }
