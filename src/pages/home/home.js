@@ -15,14 +15,11 @@ import {
     Alert,
     Spinner,
 } from 'react-bootstrap'
+import moment from 'moment'
 const Home = (props) => {
     let navigate = useNavigate()
     const [searchParams] = useSearchParams()
     const DOToken = searchParams.get('DOToken')
-    const senderName = useRef(null)
-    const recieverName = useRef(null)
-    const recieverNumber = useRef(null)
-    const senderNote = useRef(null)
     const getOrderDetails = ({ doToken }) => {
         return new Promise(async (resolve, reject) => {
             var myHeaders = new Headers()
@@ -52,21 +49,21 @@ const Home = (props) => {
         return new Promise(async (resolve, reject) => {
             var myHeaders = new Headers()
             var urlencoded = new URLSearchParams()
-            urlencoded.append('DOToken', DOToken)
-            urlencoded.append('Lang', orderDetails?.selectedLocation?.Lang)
-            urlencoded.append('Lat', orderDetails?.selectedLocation?.Lat)
-            urlencoded.append('IsAccepted', 'True')
-            urlencoded.append('ReciverName', recieverName.current.value)
-            urlencoded.append('ReciverTelNo', recieverNumber.current.value)
-            urlencoded.append('SenderNoteToReciver', senderNote.current.value)
-            urlencoded.append('SenderName', senderName.current.value)
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: urlencoded,
-                redirect: 'follow',
-            }
             try {
+                urlencoded.append('DOToken', DOToken)
+                urlencoded.append('Lang', orderDetails?.selectedLocation?.Lang)
+                urlencoded.append('Lat', orderDetails?.selectedLocation?.Lat)
+                urlencoded.append('IsAccepted', 'True')
+                urlencoded.append('ReciverName', recieverName)
+                urlencoded.append('ReciverTelNo', recieverNumber)
+                urlencoded.append('SenderNoteToReciver', senderNote)
+                urlencoded.append('SenderName', senderName)
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: 'follow',
+                }
                 var response = await fetch(
                     `${baseURI}/D/ClientResponse`,
                     requestOptions
@@ -96,7 +93,6 @@ const Home = (props) => {
             setOrderDetails(orderDetails)
             setIsLoadingSubmit(false)
         } catch (error) {
-            console.log(error)
             setErrorMsg(error)
             setIsLoadingErrorSubmit(true)
             setIsLoadingSubmit(false)
@@ -115,21 +111,16 @@ const Home = (props) => {
         let locations = orderDetails.ClientLocations
         locations.splice(-1)
         locations.forEach((e) => (e.isSelected = false))
-
-        locations.push({
-            isOldLocation: false,
+        const newLocation = {
             isSelected: true,
             Lat: marker.latLng.lat(),
             Lang: marker.latLng.lng(),
-        })
+        }
+        locations.push(newLocation)
         setOrderDetails({
             ...orderDetails,
             ClientLocations: locations,
-            selectedLocation: {
-                isSelected: true,
-                Lat: marker.latLng.lat(),
-                Lang: marker.latLng.lng(),
-            },
+            selectedLocation: newLocation,
         })
     }
     const [orderDetails, setOrderDetails] = useState(null)
@@ -138,6 +129,12 @@ const Home = (props) => {
     const [isLoadingSubmit, setIsLoadingSubmit] = useState(false)
     const [isLoadingErrorSubmit, setIsLoadingErrorSubmit] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
+
+    const [senderName, setSenderName] = useState('')
+    const [recieverName, setRecieverName] = useState('')
+    const [recieverNumber, setRecieverNumber] = useState('')
+    const [senderNote, setSenderNote] = useState('')
+
     useEffect(() => {
         if (!DOToken) {
             navigate('/error')
@@ -248,12 +245,19 @@ const Home = (props) => {
                                         <div className="fw-bold">
                                             تاريخ الإنشاء:
                                         </div>
-                                        {orderDetails?.OrderDetails?.CreateDate
-                                            ? Date(
+                                        {moment
+                                            .utc(
+                                                orderDetails?.OrderDetails
+                                                    ?.CreateDate
+                                            )
+                                            .local()
+                                            .format('DD/MM/YYYY HH:mm A')}
+                                        {/* {orderDetails?.OrderDetails?.CreateDate
+                                            ? moment(
                                                   orderDetails?.OrderDetails
                                                       ?.CreateDate
                                               )
-                                            : 'لايوجد'}
+                                            : 'لايوجد'} */}
                                     </div>
                                 </ListGroup.Item>
                             </ListGroup>
@@ -339,7 +343,7 @@ const Home = (props) => {
                 </Row>
                 {isLoadingSubmit ? (
                     <Row>
-                        <Col className={'d-flex justify-content-center'}>
+                        <Col className={'d-flex justify-content-center my-5'}>
                             <Spinner
                                 variant="primary"
                                 animation="border"
@@ -361,6 +365,11 @@ const Home = (props) => {
                                     </Col>
                                 </Row>
                             )}
+                            <Row>
+                                <Col className={'my-2'}>
+                                    <p>أدخل بياناتك هنا:</p>
+                                </Col>
+                            </Row>
                             <Form>
                                 <Form.Group as={Row} className="mb-3">
                                     {/* <Col sm="6" className="mb-2">
@@ -375,7 +384,12 @@ const Home = (props) => {
                                     </Form.Label> */}
                                         <Form.Control
                                             placeholder="اسم المرسل"
-                                            ref={senderName}
+                                            value={senderName}
+                                            onChange={(event) =>
+                                                setSenderName(
+                                                    event.target.value
+                                                )
+                                            }
                                             type="text"
                                         />
                                     </Col>
@@ -385,7 +399,12 @@ const Home = (props) => {
                                     </Form.Label> */}
                                         <Form.Control
                                             placeholder="اسم المستقبل"
-                                            ref={recieverName}
+                                            value={recieverName}
+                                            onChange={(event) =>
+                                                setRecieverName(
+                                                    event.target.value
+                                                )
+                                            }
                                             type="text"
                                         />
                                     </Col>
@@ -402,7 +421,12 @@ const Home = (props) => {
                                     </Form.Label> */}
                                         <Form.Control
                                             placeholder="رقم هاتف المستقبل"
-                                            ref={recieverNumber}
+                                            value={recieverNumber}
+                                            onChange={(event) =>
+                                                setRecieverNumber(
+                                                    event.target.value
+                                                )
+                                            }
                                             type="text"
                                         />
                                     </Col>
@@ -412,26 +436,39 @@ const Home = (props) => {
                                     </Form.Label> */}
                                         <Form.Control
                                             placeholder="ملاحظات"
-                                            ref={senderNote}
+                                            value={senderNote}
+                                            onChange={(event) =>
+                                                setSenderNote(
+                                                    event.target.value
+                                                )
+                                            }
                                             as="textarea"
                                         />
                                     </Col>
                                 </Form.Group>
                             </Form>
                         </Col>
-                        <Col xs={12} className={'mt-2'}>
-                            <Button
-                                style={{ marginLeft: '0.2rem' }}
-                                onClick={submitForm}
-                            >
-                                قبول الطلب
-                            </Button>
-                            <Button variant="danger" onClick={submitForm}>
-                                رفض
-                            </Button>
-                        </Col>
                     </Row>
                 )}
+                <Row>
+                    <Col xs={12} className={'mb-4 d-grid gap-2'}>
+                        <Button
+                            disabled={
+                                senderName === '' ||
+                                recieverName === '' ||
+                                recieverNumber === '' ||
+                                isLoadingSubmit
+                            }
+                            variant="success"
+                            onClick={submitForm}
+                        >
+                            قبول الطلب
+                        </Button>
+                        <Button variant="danger" onClick={() => {}}>
+                            رفض
+                        </Button>
+                    </Col>
+                </Row>
             </Container>
         </Container>
     )
