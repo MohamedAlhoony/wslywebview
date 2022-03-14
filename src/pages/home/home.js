@@ -71,12 +71,13 @@ const Home = (props) => {
                     `${baseURI}/D/ClientResponse`,
                     requestOptions
                 )
-                // const body = JSON.parse(await response.text())
+                const responseText = await response.text()
+                const body = responseText ? JSON.parse(responseText) : ''
                 if (response.status >= 200 && response.status < 300) {
                     navigate('/successful', { replace: true })
                     resolve()
                 } else {
-                    reject()
+                    reject(body)
                 }
             } catch (error) {
                 reject(error)
@@ -96,6 +97,7 @@ const Home = (props) => {
             setIsLoadingSubmit(false)
         } catch (error) {
             console.log(error)
+            setErrorMsg(error)
             setIsLoadingErrorSubmit(true)
             setIsLoadingSubmit(false)
         }
@@ -135,6 +137,7 @@ const Home = (props) => {
     const [isLoadingError, setIsLoadingError] = useState(false)
     const [isLoadingSubmit, setIsLoadingSubmit] = useState(false)
     const [isLoadingErrorSubmit, setIsLoadingErrorSubmit] = useState(false)
+    const [errorMsg, setErrorMsg] = useState('')
     useEffect(() => {
         if (!DOToken) {
             navigate('/error')
@@ -353,10 +356,7 @@ const Home = (props) => {
                                 <Row>
                                     <Col className={'my-2'}>
                                         <Alert variant="danger">
-                                            <h5>
-                                                فشلت العملية, تاكد من البيانات
-                                                المدخلة
-                                            </h5>
+                                            <h5>{errorMsg}</h5>
                                         </Alert>
                                     </Col>
                                 </Row>
