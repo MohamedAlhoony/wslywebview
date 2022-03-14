@@ -156,7 +156,7 @@ const Home = (props) => {
     const [isLoadingErrorSubmit, setIsLoadingErrorSubmit] = useState(false)
     useEffect(() => {
         getData()
-    })
+    }, [])
     return (
         <Container fluid={'true'}>
             <Navbar
