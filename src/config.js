@@ -4,6 +4,6 @@ const reportsDateFormat = 'YYYY-MM-DD'
 if (process.env.NODE_ENV !== 'production') {
     baseURI = 'https://wslyeng.azurewebsites.net'
 } else {
-    baseURI = ''
+    baseURI = 'https://wslyeng.azurewebsites.net'
 }
 export { baseURI, dateFormat, reportsDateFormat }
