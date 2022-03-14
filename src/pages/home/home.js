@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { baseURI } from '../../config'
 import Map from './map/map'
 import { useSearchParams, useNavigate } from 'react-router-dom'
