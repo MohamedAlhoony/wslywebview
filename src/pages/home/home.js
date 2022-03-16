@@ -13,6 +13,7 @@ import {
     Spinner,
 } from 'react-bootstrap'
 import moment from 'moment'
+
 const Home = (props) => {
     let navigate = useNavigate()
     const [searchParams] = useSearchParams()
@@ -97,17 +98,22 @@ const Home = (props) => {
     }
 
     const handleMarkerClick = (item, marker, key) => {
-        const oldState = Object.assign({}, orderDetails)
-        oldState.selectedLocation = item
-        oldState.ClientLocations.slice().forEach((e) => (e.isSelected = false))
-        oldState.ClientLocations[key].isSelected = true
-
-        setOrderDetails(oldState)
+        let locations = orderDetails.ClientLocations
+        // locations.splice(-1)
+        // locations.forEach((e) => (e.isSelected = false))
+        locations = []
+        locations.push(item)
+        setOrderDetails({
+            ...orderDetails,
+            ClientLocations: locations,
+            selectedLocation: item,
+        })
     }
     const onMapClick = (marker) => {
         let locations = orderDetails.ClientLocations
-        locations.splice(-1)
-        locations.forEach((e) => (e.isSelected = false))
+        // locations.splice(-1)
+        // locations.forEach((e) => (e.isSelected = false))
+        locations = []
         const newLocation = {
             isSelected: true,
             Lat: marker.latLng.lat(),

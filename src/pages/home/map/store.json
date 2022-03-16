@@ -1,0 +1,139 @@
+[
+    {
+        "version": "1.0",
+        "image": {
+            "name": "/home/videosdownloader/public_html/image/public/uploadt/store.svg",
+            "baseName": "store.svg",
+            "format": "SVG",
+            "formatDescription": "SVG",
+            "mimeType": "image/svg+xml",
+            "class": "DirectClass",
+            "geometry": {
+                "width": 256,
+                "height": 256,
+                "x": 0,
+                "y": 0
+            },
+            "units": "Undefined",
+            "type": "TrueColorAlpha",
+            "baseType": "Undefined",
+            "endianness": "Undefined",
+            "colorspace": "sRGB",
+            "depth": 16,
+            "baseDepth": 16,
+            "channelDepth": {
+                "alpha": 1,
+                "red": 16,
+                "green": 16,
+                "blue": 1
+            },
+            "pixels": 262144,
+            "imageStatistics": {
+                "Overall": {
+                    "min": 14906,
+                    "max": 65535,
+                    "mean": 51221.7,
+                    "median": 65535,
+                    "standardDeviation": 14646.6,
+                    "kurtosis": -1.01917,
+                    "skewness": -0.868108,
+                    "entropy": 0.213352
+                }
+            },
+            "channelStatistics": {
+                "alpha": {
+                    "min": 65535,
+                    "max": 65535,
+                    "mean": 65535,
+                    "median": 65535,
+                    "standardDeviation": 0,
+                    "kurtosis": 8.192e51,
+                    "skewness": 1e36,
+                    "entropy": 0
+                },
+                "red": {
+                    "min": 16448,
+                    "max": 65535,
+                    "mean": 48176.6,
+                    "median": 65535,
+                    "standardDeviation": 20454.2,
+                    "kurtosis": -1.18761,
+                    "skewness": -0.772161,
+                    "entropy": 0.26307
+                },
+                "green": {
+                    "min": 20046,
+                    "max": 65535,
+                    "mean": 45025.5,
+                    "median": 65535,
+                    "standardDeviation": 19044.7,
+                    "kurtosis": -1.80112,
+                    "skewness": -0.178003,
+                    "entropy": 0.295482
+                },
+                "blue": {
+                    "min": 14906,
+                    "max": 65535,
+                    "mean": 46149.6,
+                    "median": 65535,
+                    "standardDeviation": 19087.6,
+                    "kurtosis": -1.70544,
+                    "skewness": -0.274197,
+                    "entropy": 0.294856
+                }
+            },
+            "renderingIntent": "Perceptual",
+            "gamma": 0.454545,
+            "chromaticity": {
+                "redPrimary": {
+                    "x": 0.64,
+                    "y": 0.33
+                },
+                "greenPrimary": {
+                    "x": 0.3,
+                    "y": 0.6
+                },
+                "bluePrimary": {
+                    "x": 0.15,
+                    "y": 0.06
+                },
+                "whitePrimary": {
+                    "x": 0.3127,
+                    "y": 0.329
+                }
+            },
+            "matteColor": "#BDBDBD",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#DFDFDF",
+            "transparentColor": "#00000000",
+            "interlace": "None",
+            "intensity": "Undefined",
+            "compose": "Over",
+            "pageGeometry": {
+                "width": 256,
+                "height": 256,
+                "x": 0,
+                "y": 0
+            },
+            "dispose": "Undefined",
+            "iterations": 0,
+            "compression": "Undefined",
+            "orientation": "Undefined",
+            "properties": {
+                "date:create": "2022-03-16T09:02:56+00:00",
+                "date:modify": "2022-03-16T09:02:56+00:00",
+                "signature": "baed2574f5baa76a96db20a462bfd093fed3b33586fea67a180d809029cb29dd"
+            },
+            "artifacts": {
+                "mvg:vector-graphics": "push graphic-context\ncompliance \"SVG\"\nfill \"black\"\nfill-opacity 1\nstroke \"none\"\nstroke-width 1\nstroke-opacity 1\nfill-rule nonzero\nviewbox 0 0 256 256\naffine 1 0 0 1 0 0\n# Created with Fabric.js 1.7.22\npush defs\npop defs\npush graphic-context\naffine 0.72 0 0 0.72 128 128\npush graphic-context\nstroke \"none\"\nstroke-width 0\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"none\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 3.89 0 0 3.89 -175.05 -175.05\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(64,89,107)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 9 33.294 l 0 46.274 c 0 1.576 1.278 2.854 2.854 2.854 h 66.293 c 1.576 0 2.854 -1.278 2.854 -2.854 l 0 -46.274 l 0 -13.301 c 0 -1.576 -1.278 -2.854 -2.854 -2.854 H 11.854 C 10.278 17.14 9 18.417 9 19.993 L 9 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(214,224,235)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 69.335 43.125 H 54.623 c -1.176 0 -2.13 0.954 -2.13 2.13 v 33.307 h 18.972 V 45.255 C 71.465 44.079 70.511 43.125 69.335 43.125 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(214,224,235)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 41.403 68.023 H 20.565 c -1.121 0 -2.03 -0.909 -2.03 -2.03 V 45.155 c 0 -1.121 0.909 -2.03 2.03 -2.03 h 20.839 c 1.121 0 2.03 0.909 2.03 2.03 v 20.839 C 43.433 67.115 42.524 68.023 41.403 68.023 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(231,78,58)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 9.2 33.294 H 8.8 c -4.86 0 -8.8 -3.94 -8.8 -8.8 l 0 -3.054 c 5.481 -1.841 11.432 -2.016 18 0 v 3.054 C 18 29.354 14.06 33.294 9.2 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(176,182,188)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 27.2 33.294 h -0.4 c -4.86 0 -8.8 -3.94 -8.8 -8.8 V 21.44 c 6.388 -1.301 12.427 -1.433 18 0 v 3.054 C 36 29.354 32.06 33.294 27.2 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(231,78,58)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 80.8 33.294 h 0.4 c 4.86 0 8.8 -3.94 8.8 -8.8 V 21.44 c -5.589 -1.483 -11.652 -1.253 -18 0 v 3.054 C 72 29.354 75.94 33.294 80.8 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(176,182,188)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 62.8 33.294 h 0.4 c 4.86 0 8.8 -3.94 8.8 -8.8 V 21.44 c -6 -2.558 -12 -2.558 -18 0 v 3.054 C 54 29.354 57.94 33.294 62.8 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(214,224,235)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 36 21.44 c 0.929 -3.982 0.861 -8.649 0 -13.861 H 23.225 c -3.432 4.62 -5.173 9.241 -5.225 13.861 H 36 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(255,112,88)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\npolygon 0,21.44 11.39,7.58 23.23,7.58 18,21.44 \npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(214,224,235)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 54 21.44 c -2.167 -4.489 -1.851 -9.128 0 -13.861 h 12.775 c 4.264 5.189 6.219 9.858 5.225 13.861 H 54 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(255,112,88)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\npolygon 90,21.44 78.61,7.58 66.78,7.58 72,21.44 \npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(231,78,58)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\nstroke-linecap \"round\"\npath \"M 45.2 33.294 h -0.4 c -4.86 0 -8.8 -3.94 -8.8 -8.8 V 21.44 c 6 -2.558 12 -2.558 18 0 v 3.054 C 54 29.354 50.06 33.294 45.2 33.294 z\"\npop graphic-context\npush graphic-context\nstroke \"none\"\nstroke-width 1\nstroke-dasharray none\nstroke-linecap \"butt\"\nstroke-linejoin \"miter\"\nstroke-miterlimit \"10\"\nfill \"rgb(255,112,88)\"\nfill-rule \"nonzero\"\nopacity \"1\"\naffine 1 0 0 1 0 0\npolygon 36,7.58 46.77,7.58 54,7.58 54,21.44 36,21.44 \npop graphic-context\npop graphic-context\npop graphic-context\npop graphic-context\n"
+            },
+            "tainted": false,
+            "filesize": "5509B",
+            "numberPixels": "65536",
+            "pixelsPerSecond": "2.63024MB",
+            "userTime": "0.030u",
+            "elapsedTime": "0:01.024",
+            "version": "ImageMagick 7.0.10-58 Q16 x86_64 2021-01-14 https://imagemagick.org"
+        }
+    }
+]
