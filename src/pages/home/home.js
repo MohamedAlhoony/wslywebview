@@ -134,8 +134,8 @@ const Home = (props) => {
     const [errorMsg, setErrorMsg] = useState('')
 
     const [senderName, setSenderName] = useState('')
-    const [recieverName, setRecieverName] = useState('')
-    const [recieverNumber, setRecieverNumber] = useState('')
+    const [recieverName] = useState('')
+    const [recieverNumber] = useState('')
     const [senderNote, setSenderNote] = useState('')
 
     useEffect(() => {
