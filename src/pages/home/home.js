@@ -150,7 +150,7 @@ const Home = (props) => {
                     doToken: DOToken,
                 })
                 if (orderDetails.OrderDetails?.Status !== 0) {
-                    navigate('/alreadyAccepted', { replace: true })
+                    navigate(`/alreadyAccepted/?DOToken=${DOToken}`)
                 }
                 orderDetails?.ClientLocations.slice()?.forEach((element) => {
                     element.isSelected = false
