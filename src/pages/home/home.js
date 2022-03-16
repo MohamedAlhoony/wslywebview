@@ -348,16 +348,7 @@ const Home = (props) => {
                         </Row>
                         <Form>
                             <Form.Group as={Row} className="mb-3">
-                                {/* <Col sm="6" className="mb-2">
-                                    <Form.Label column sm="2">
-                                        اسم الزبون:
-                                    </Form.Label>
-                                    <Form.Control type="text" />
-                                </Col> */}
                                 <Col sm="6" className="mb-2">
-                                    {/* <Form.Label column sm="2">
-                                        اسم المرسل:
-                                    </Form.Label> */}
                                     <Form.Control
                                         placeholder="اسم المرسل"
                                         value={senderName}
@@ -367,10 +358,7 @@ const Home = (props) => {
                                         type="text"
                                     />
                                 </Col>
-                                <Col sm="6" className="mb-2">
-                                    {/* <Form.Label column sm="2">
-                                        اسم المستقبل:
-                                    </Form.Label> */}
+                                {/* <Col sm="6" className="mb-2">
                                     <Form.Control
                                         placeholder="اسم المستقبل"
                                         value={recieverName}
@@ -380,17 +368,8 @@ const Home = (props) => {
                                         type="text"
                                     />
                                 </Col>
-                                {/* <Col sm="6" className="mb-2">
-                                    <Form.Label column sm="2">
-                                        رقم الهاتف:
-                                    </Form.Label>
-                                    <Form.Control type="text" />
-                                </Col> */}
 
                                 <Col sm="6" className="mb-2">
-                                    {/* <Form.Label column sm="2">
-                                        رقم هاتف المستقبل:
-                                    </Form.Label> */}
                                     <Form.Control
                                         placeholder="رقم هاتف المستقبل"
                                         value={recieverNumber}
@@ -402,11 +381,8 @@ const Home = (props) => {
                                         maxLength={'20'}
                                         type="number"
                                     />
-                                </Col>
+                                </Col> */}
                                 <Col sm="6" className="mb-2">
-                                    {/* <Form.Label column sm="2">
-                                        رقم هاتف المستقبل:
-                                    </Form.Label> */}
                                     <Form.Control
                                         placeholder="ملاحظات"
                                         value={senderNote}
@@ -426,8 +402,8 @@ const Home = (props) => {
                     <Button
                         disabled={
                             senderName === '' ||
-                            recieverName === '' ||
-                            recieverNumber === '' ||
+                            // recieverName === '' ||
+                            // recieverNumber === '' ||
                             isLoadingSubmit
                         }
                         variant="success"
