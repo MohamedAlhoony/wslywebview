@@ -28,7 +28,7 @@ const MyMapComponent = withScriptjs(
             {props.locations.map((item, key) => {
                 return (
                     <Marker
-                        icon={'./images/store.svg'}
+                        icon={'./images/home.svg'}
                         zIndex={item.isSelected ? 1000 : 1}
                         key={key}
                         position={{ lat: item.Lat, lng: item.Lang }}
