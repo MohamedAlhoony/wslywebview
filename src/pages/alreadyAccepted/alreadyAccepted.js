@@ -163,7 +163,7 @@ const AlreadyAccepted = () => {
                                         'لايوجد'}
                                 </div>
                             </ListGroup.Item>
-                            <ListGroup.Item
+                            {/* <ListGroup.Item
                                 as="li"
                                 className="d-flex justify-content-between align-items-start"
                             >
@@ -172,7 +172,7 @@ const AlreadyAccepted = () => {
                                     {orderDetails?.OrderDetails?.ShopTelNo ??
                                         'لايوجد'}
                                 </div>
-                            </ListGroup.Item>
+                            </ListGroup.Item> */}
                             <ListGroup.Item
                                 as="li"
                                 className="d-flex justify-content-between align-items-start"
@@ -188,7 +188,7 @@ const AlreadyAccepted = () => {
                         </ListGroup>
                     </Col>
                     <Col md={'4'}>
-                        <ListGroup as="ol">
+                        {/* <ListGroup as="ol">
                             <ListGroup.Item
                                 as="li"
                                 className="d-flex justify-content-between align-items-start"
@@ -201,7 +201,7 @@ const AlreadyAccepted = () => {
                                         'لايوجد'}
                                 </div>
                             </ListGroup.Item>
-                        </ListGroup>
+                        </ListGroup> */}
                     </Col>
                 </Row>
             )}
