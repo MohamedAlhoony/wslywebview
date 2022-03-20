@@ -43,7 +43,7 @@ const AlreadyAccepted = () => {
     // const [senderName, setSenderName] = useState('')
     // const [senderNote, setSenderNote] = useState('')
     const getStatus = () => {
-        switch (orderDetails?.OrderDetails?.status) {
+        switch (orderDetails?.OrderDetails?.Status) {
             case 1:
                 return 'تم قبولها'
             case 2:
