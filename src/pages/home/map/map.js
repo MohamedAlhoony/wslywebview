@@ -17,18 +17,26 @@ const MyMapComponent = withScriptjs(
             }}
             defaultZoom={props.locations.length ? 15 : 9}
             defaultCenter={
-                props.locations.length
-                    ? {
-                          lat: props.locations[props.locations.length - 1].Lat,
-                          lng: props.locations[props.locations.length - 1].Lang,
-                      }
+                props.store.lat && props.store.lang
+                    ? { lat: props.store.lat, lng: props.store.lang }
                     : { lat: 32.8872, lng: 13.1913 }
             }
         >
+            {props.store.lat && props.store.lang && (
+                <Marker
+                    zIndex={1000}
+                    icon={'./images/store.svg'}
+                    position={{ lat: props.store.lat, lng: props.store.lang }}
+                />
+            )}
             {props.locations.map((item, key) => {
                 return (
                     <Marker
-                        icon={'./images/home.svg'}
+                        icon={
+                            item.isSelected
+                                ? './images/home selected.svg'
+                                : './images/home.svg'
+                        }
                         zIndex={item.isSelected ? 1000 : 1}
                         key={key}
                         position={{ lat: item.Lat, lng: item.Lang }}

@@ -99,10 +99,9 @@ const Home = (props) => {
 
     const handleMarkerClick = (item, marker, key) => {
         let locations = orderDetails.ClientLocations
-        // locations.splice(-1)
-        // locations.forEach((e) => (e.isSelected = false))
-        locations = []
-        locations.push(item)
+        locations.splice(-1)
+        locations.forEach((e) => (e.isSelected = false))
+        locations.push({ ...item, isSelected: true })
         setOrderDetails({
             ...orderDetails,
             ClientLocations: locations,
@@ -111,9 +110,8 @@ const Home = (props) => {
     }
     const onMapClick = (marker) => {
         let locations = orderDetails.ClientLocations
-        // locations.splice(-1)
-        // locations.forEach((e) => (e.isSelected = false))
-        locations = []
+        locations.splice(-1)
+        locations.forEach((e) => (e.isSelected = false))
         const newLocation = {
             isSelected: true,
             Lat: marker.latLng.lat(),
@@ -202,8 +200,8 @@ const Home = (props) => {
                                 className="d-flex justify-content-between align-items-start"
                             >
                                 <div className="ms-2 me-auto">
-                                    <div className="fw-bold">وصف الطلبية:</div>
-                                    {orderDetails?.OrderDetails?.Description ??
+                                    <div className="fw-bold">رقم الطلبية:</div>
+                                    {orderDetails?.OrderDetails?.RefrenceNo ??
                                         'لايوجد'}
                                 </div>
                             </ListGroup.Item>
@@ -212,8 +210,8 @@ const Home = (props) => {
                                 className="d-flex justify-content-between align-items-start"
                             >
                                 <div className="ms-2 me-auto">
-                                    <div className="fw-bold">رقم الطلبية:</div>
-                                    {orderDetails?.OrderDetails?.RefrenceNo ??
+                                    <div className="fw-bold">وصف الطلبية:</div>
+                                    {orderDetails?.OrderDetails?.Description ??
                                         'لايوجد'}
                                 </div>
                             </ListGroup.Item>
@@ -265,20 +263,35 @@ const Home = (props) => {
                                 </div>
                             </ListGroup.Item>
                             <ListGroup.Item
+                                variant="success"
                                 as="li"
                                 className="d-flex justify-content-between align-items-start"
                             >
-                                <div className="ms-2 me-auto">
+                                <div
+                                    style={{
+                                        fontWeight: '600',
+                                    }}
+                                    className="ms-2 me-auto"
+                                >
                                     <div className="fw-bold">
                                         القيمة الكلية:
                                     </div>
-                                    {orderDetails?.OrderDetails?.TotalAmount ??
-                                        'لايوجد'}
+                                    {orderDetails?.OrderDetails?.TotalAmount ? (
+                                        <span>
+                                            {
+                                                orderDetails.OrderDetails
+                                                    .TotalAmount
+                                            }
+                                            &nbsp;دينار ليبي
+                                        </span>
+                                    ) : (
+                                        'لايوجد'
+                                    )}
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col md={'4'}>
+                    {/* <Col md={'4'}>
                         <ListGroup as="ol">
                             <ListGroup.Item
                                 as="li"
@@ -293,7 +306,7 @@ const Home = (props) => {
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
-                    </Col>
+                    </Col> */}
                 </Row>
             )}
             <Row>
@@ -309,6 +322,10 @@ const Home = (props) => {
                         <>
                             <h5>قم بتحديد موقعك على الخريطة:</h5>
                             <Map
+                                store={{
+                                    lat: orderDetails?.OrderDetails?.FromLat,
+                                    lang: orderDetails?.OrderDetails?.FromLang,
+                                }}
                                 onMapClick={onMapClick}
                                 handleMarkerClick={handleMarkerClick}
                                 locations={orderDetails.ClientLocations}

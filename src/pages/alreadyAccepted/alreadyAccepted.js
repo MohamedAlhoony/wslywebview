@@ -51,9 +51,9 @@ const AlreadyAccepted = () => {
                 let orderDetails = await getOrderDetails({
                     doToken: DOToken,
                 })
-                // if (orderDetails.OrderDetails?.Status !== 0) {
-                //     navigate('/alreadyAccepted', { replace: true })
-                // }
+                if (orderDetails.OrderDetails?.Status === 0) {
+                    navigate(`/?DOToken=${DOToken}`, { replace: true })
+                }
                 orderDetails?.ClientLocations.slice()?.forEach((element) => {
                     element.isSelected = false
                 })
