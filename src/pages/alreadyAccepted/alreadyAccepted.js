@@ -296,7 +296,7 @@ const AlreadyAccepted = () => {
                         </ListGroup>
                     </Col>
                     {orderDetails?.OrderDetails?.ConfirmationCode && (
-                        <>
+                        <Col xs={12}>
                             <Row>
                                 <Col className={'my-3 d-grid gap-2'}>
                                     <Button
@@ -344,7 +344,7 @@ const AlreadyAccepted = () => {
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
-                        </>
+                        </Col>
                     )}
 
                     {/* <Row>
