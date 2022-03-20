@@ -296,7 +296,7 @@ const AlreadyAccepted = () => {
                         </ListGroup>
                     </Col>
                     <Row>
-                        <Col className={'my-3'}>
+                        <Col className={'my-3 d-grid gap-2'}>
                             <Button variant="primary" onClick={handleShow}>
                                 عرض QR التأكيد
                             </Button>
