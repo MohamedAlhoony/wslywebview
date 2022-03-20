@@ -295,42 +295,58 @@ const AlreadyAccepted = () => {
                             </ListGroup.Item> */}
                         </ListGroup>
                     </Col>
-                    <Row>
-                        <Col className={'my-3 d-grid gap-2'}>
-                            <Button variant="primary" onClick={handleShow}>
-                                عرض QR التأكيد
-                            </Button>
-                        </Col>
-                    </Row>
-                    <Modal centered show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>رمز التأكيد</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                flexDirection: 'column',
-                            }}
-                        >
-                            <QRCode
-                                value={
-                                    orderDetails?.OrderDetails
-                                        ?.ConfirmationCode ?? ''
-                                }
-                            />
-                            <h2 style={{ padding: '1rem', direction: 'ltr' }}>
-                                {orderDetails?.OrderDetails?.ConfirmationCode ??
-                                    ''}
-                            </h2>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                إغلاق
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                    {orderDetails?.OrderDetails?.ConfirmationCode && (
+                        <>
+                            <Row>
+                                <Col className={'my-3 d-grid gap-2'}>
+                                    <Button
+                                        variant="primary"
+                                        onClick={handleShow}
+                                    >
+                                        عرض QR التأكيد
+                                    </Button>
+                                </Col>
+                            </Row>
+                            <Modal centered show={show} onHide={handleClose}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>رمز التأكيد</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        flexDirection: 'column',
+                                    }}
+                                >
+                                    <QRCode
+                                        value={
+                                            orderDetails?.OrderDetails
+                                                ?.ConfirmationCode ?? ''
+                                        }
+                                    />
+                                    <h2
+                                        style={{
+                                            padding: '1rem',
+                                            direction: 'ltr',
+                                        }}
+                                    >
+                                        {orderDetails?.OrderDetails
+                                            ?.ConfirmationCode ?? ''}
+                                    </h2>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button
+                                        variant="secondary"
+                                        onClick={handleClose}
+                                    >
+                                        إغلاق
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </>
+                    )}
+
                     {/* <Row>
                         <Col className={'d-flex my-5 justify-content-center'}>
                             <QRCode
