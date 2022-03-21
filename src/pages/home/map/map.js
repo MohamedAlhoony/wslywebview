@@ -49,7 +49,6 @@ const MyMapComponent = withScriptjs(
         </GoogleMap>
     ))
 )
-
 const map = (props) => {
     return (
         <MyMapComponent

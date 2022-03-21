@@ -10,7 +10,6 @@ import {
     Spinner,
     Modal,
     Button,
-    Card,
 } from 'react-bootstrap'
 import moment from 'moment'
 import QRCode from 'react-qr-code'
