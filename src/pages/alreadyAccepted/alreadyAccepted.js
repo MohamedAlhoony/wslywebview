@@ -62,7 +62,7 @@ const AlreadyAccepted = () => {
             case 1:
                 return 'تم قبولها'
             case 2:
-                return 'تم تجهيزها'
+                return 'قيد التجهيز'
             case 3:
                 return 'جاهزة للتوصيل'
             case 4:
