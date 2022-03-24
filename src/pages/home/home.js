@@ -147,6 +147,7 @@ const Home = (props) => {
                 let orderDetails = await getOrderDetails({
                     doToken: DOToken,
                 })
+
                 if (orderDetails.OrderDetails?.Status !== 0) {
                     navigate(`/alreadyAccepted/?DOToken=${DOToken}`)
                 }
@@ -154,6 +155,7 @@ const Home = (props) => {
                     element.isSelected = false
                 })
                 setOrderDetails(orderDetails)
+                setSenderName(orderDetails.OrderDetails.SenderName)
                 setIsLoadingDetails(false)
             } catch (error) {
                 setIsLoadingError(true)
