@@ -280,15 +280,17 @@ const Home = (props) => {
                         </Row>
                         <Row>
                             <Col xs={12} md={4}>
-                                <ListGroup.Item style={{ border: 0 }} as="li">
-                                    <div>
+                                <ListGroup.Item
+                                    style={{ border: 0 }}
+                                    as="li"
+                                    className="d-flex justify-content-between align-items-start"
+                                >
+                                    <div className="ms-2 me-auto">
                                         <div className="fw-bold">
                                             وصف الطلبية:
                                         </div>
-                                        <div className="d-flex flex-wrap">
-                                            {orderDetails?.OrderDetails
-                                                ?.Description ?? 'لايوجد'}
-                                        </div>
+                                        {orderDetails?.OrderDetails
+                                            ?.Description ?? 'لايوجد'}
                                     </div>
                                 </ListGroup.Item>
                             </Col>
