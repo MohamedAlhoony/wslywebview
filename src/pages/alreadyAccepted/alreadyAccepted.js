@@ -98,7 +98,7 @@ const AlreadyAccepted = () => {
         <Container>
             <Row>
                 <Col>
-                    <Alert variant="success">
+                    <Alert className={'text-center'} variant="success">
                         <h4>الطلبية {getStatus()}.</h4>
                     </Alert>
                 </Col>
