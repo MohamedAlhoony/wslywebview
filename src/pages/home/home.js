@@ -155,7 +155,7 @@ const Home = (props) => {
                     element.isSelected = false
                 })
                 setOrderDetails(orderDetails)
-                setSenderName(orderDetails?.OrderDetails?.SenderName ?? '')
+                setSenderName(orderDetails?.OrderDetails?.ClientName ?? '')
                 setIsLoadingDetails(false)
             } catch (error) {
                 setIsLoadingError(true)
