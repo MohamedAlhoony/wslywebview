@@ -243,54 +243,48 @@ const Home = (props) => {
                     <Col xs={12}>
                         <Row>
                             <Col xs={6} md={4}>
-                                <ListGroup.Item
-                                    style={{ border: 0 }}
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
+                                <ListGroup.Item style={{ border: 0 }} as="li">
+                                    <div className="">
                                         <div className="fw-bold">
                                             رقم الطلبية:
                                         </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.RefrenceNo ?? 'لايوجد'}
+                                        <div className="list-content">
+                                            {orderDetails?.OrderDetails
+                                                ?.RefrenceNo ?? 'لايوجد'}
+                                        </div>
                                     </div>
                                 </ListGroup.Item>
                             </Col>
                             <Col xs={6} md={4}>
-                                <ListGroup.Item
-                                    style={{ border: 0 }}
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
+                                <ListGroup.Item style={{ border: 0 }} as="li">
+                                    <div>
                                         <div className="fw-bold">
                                             تاريخ الإنشاء:
                                         </div>
-                                        {moment
-                                            .utc(
-                                                orderDetails?.OrderDetails
-                                                    ?.CreateDate
-                                            )
-                                            .local()
-                                            .format('DD/MM/YYYY HH:mm A')}
+                                        <div className="list-content">
+                                            {moment
+                                                .utc(
+                                                    orderDetails?.OrderDetails
+                                                        ?.CreateDate
+                                                )
+                                                .local()
+                                                .format('DD/MM/YYYY HH:mm A')}
+                                        </div>
                                     </div>
                                 </ListGroup.Item>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={4}>
-                                <ListGroup.Item
-                                    style={{ border: 0 }}
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 me-auto">
+                                <ListGroup.Item style={{ border: 0 }} as="li">
+                                    <div>
                                         <div className="fw-bold">
                                             وصف الطلبية:
                                         </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.Description ?? 'لايوجد'}
+                                        <div className="list-content">
+                                            {orderDetails?.OrderDetails
+                                                ?.Description ?? 'لايوجد'}
+                                        </div>
                                     </div>
                                 </ListGroup.Item>
                             </Col>
@@ -299,29 +293,30 @@ const Home = (props) => {
                                     style={{ border: 0 }}
                                     variant="danger"
                                     as="li"
-                                    className="d-flex justify-content-between align-items-start"
                                 >
                                     <div
                                         style={{
                                             fontWeight: '600',
                                         }}
-                                        className="ms-2 me-auto"
                                     >
                                         <div className="fw-bold">
                                             القيمة الكلية:
                                         </div>
-                                        {orderDetails?.OrderDetails
-                                            ?.TotalAmount ? (
-                                            <span>
-                                                {
-                                                    orderDetails.OrderDetails
-                                                        .TotalAmount
-                                                }
-                                                &nbsp;دينار ليبي
-                                            </span>
-                                        ) : (
-                                            'لايوجد'
-                                        )}
+                                        <div className="list-content">
+                                            {orderDetails?.OrderDetails
+                                                ?.TotalAmount ? (
+                                                <span>
+                                                    {
+                                                        orderDetails
+                                                            .OrderDetails
+                                                            .TotalAmount
+                                                    }
+                                                    &nbsp;دينار ليبي
+                                                </span>
+                                            ) : (
+                                                'لايوجد'
+                                            )}
+                                        </div>
                                     </div>
                                 </ListGroup.Item>
                             </Col>
